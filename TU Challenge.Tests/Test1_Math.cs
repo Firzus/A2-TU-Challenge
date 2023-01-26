@@ -134,7 +134,6 @@ namespace TU_Challenge
             Assert.That(result, Is.EqualTo(expected));
         }
 
-
         [Test]
         [TestCase(0, 1, 1)]
         [TestCase(0, 10, 1)]

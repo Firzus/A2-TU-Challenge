@@ -25,7 +25,7 @@ namespace TU_Challenge
 
         public static bool IsDivisible(int a, int b)
         {
-            return (a == b);
+            return (a % b == 0);
         }
 
         public static bool IsEven(int a)
@@ -45,7 +45,14 @@ namespace TU_Challenge
 
         public static bool IsListInOrder(List<int> list)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < list.Count - 1; i++)
+            {
+                if (list[i] > list[i + 1])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public static bool IsMajeur(int age)
@@ -55,22 +62,42 @@ namespace TU_Challenge
 
         public static bool IsPrimary(int a)
         {
-            return ((a / 1) == a) && ((a / a) == 1) && ((a % 2 == 0));
+            if (a == 2) return true;
+            if (a % 2 == 0 || a < 2) return false;
+            for (int i = 3; i <= Math.Sqrt(a); i += 2)
+            {
+                if (a % i == 0) return false;
+            }
+            return true;
         }
 
         public static int Power(int a, int b)
         {
-            throw new NotImplementedException();
+            return Convert.ToInt32(Math.Pow(a, b));
         }
 
         public static int Power2(int a)
         {
-            throw new NotImplementedException();
+            return a*a;
         }
 
         public static List<int> Sort(List<int> toSort)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < toSort.Count - 1; i++)
+            {
+                int minIndex = i;
+                for (int j = i + 1; j < toSort.Count; j++)
+                {
+                    if (toSort[j] < toSort[minIndex])
+                    {
+                        minIndex = j;
+                    }
+                }
+                int temp = toSort[i];
+                toSort[i] = toSort[minIndex];
+                toSort[minIndex] = temp;
+            }
+            return toSort;
         }
     }
 }
